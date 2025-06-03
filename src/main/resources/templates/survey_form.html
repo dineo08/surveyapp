@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Survey Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+    <div class="nav-title">
+        <h5>_Surveys</h5>
+    </div>
+    <ul>
+        <li><a th:href="@{/survey_form}">FILL OUT SURVEY</a></li>
+        <li><a th:href="@{/survey_results}">VIEW SURVEY RESULTS</a></li>
+    </ul>
+</nav>
+<div th:if="${param.success}" style="margin-bottom: 15px;">
+    <strong>Success!</strong> Your response has been recorded.
+</div>
+
+<div th:if="${customError}" style="color:red; margin-bottom: 15px;">
+    <p th:text="${customError}"></p>
+</div>
+
+<div class="container">
+    <form th:action="@{/submit}" th:object="${surveyUser}" method="post">
+        <label>Personal Details:
+            <div class="personal-info">
+                <label>Full Name
+                    <input type="text" id="fullname" name="fullname" th:field="*{fullname}" required />
+                </label>
+
+                <label>Email
+                    <input type="email" id="email" name="email" th:field="*{email}" required />
+                </label>
+
+                <label>Contact Number
+                    <input type="text" id="phonenumber" name="phonenumber" th:field="*{phonenumber}" />
+                </label>
+
+                <label>Date of Birth
+                    <input type="date" id="birthdate" name="birthdate" th:field="*{birthdate}" />
+                </label>
+            </div>
+        </label>
+
+        <label>What is your favourite food:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="favouriteFoods" value="Pizza" /> Pizza</label>
+            <label><input type="checkbox" name="favouriteFoods" value="Pasta" /> Pasta</label>
+            <label><input type="checkbox" name="favouriteFoods" value="Pap and Wors" /> Pap and Wors</label>
+            <label><input type="checkbox" name="favouriteFoods" value="Other" /> Other</label>
+        </div>
+
+        <label>Please rate your level of agreement on a scale from 1 to 5, with 1 being "strongly agree" and 5 being "strongly disagree".</label>
+
+        <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <thead style="background-color: #f0f0f0;">
+            <tr>
+                <th></th>
+                <th>Strongly Agree</th>
+                <th>Agree</th>
+                <th>Neutral</th>
+                <th>Disagree</th>
+                <th>Strongly Disagree</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>I like to watch movies</td>
+                <td><input type="radio" th:field="*{watchMoviesRating}" value="1" /></td>
+                <td><input type="radio" th:field="*{watchMoviesRating}" value="2" /></td>
+                <td><input type="radio" th:field="*{watchMoviesRating}" value="3" /></td>
+                <td><input type="radio" th:field="*{watchMoviesRating}" value="4" /></td>
+                <td><input type="radio" th:field="*{watchMoviesRating}" value="5" /></td>
+            </tr>
+            <tr>
+                <td>I like to listen to radio</td>
+                <td><input type="radio" th:field="*{listenToRadioRating}" value="1" /></td>
+                <td><input type="radio" th:field="*{listenToRadioRating}" value="2" /></td>
+                <td><input type="radio" th:field="*{listenToRadioRating}" value="3" /></td>
+                <td><input type="radio" th:field="*{listenToRadioRating}" value="4" /></td>
+                <td><input type="radio" th:field="*{listenToRadioRating}" value="5" /></td>
+            </tr>
+            <tr>
+                <td>I like to eat out</td>
+                <td><input type="radio" th:field="*{eatOutRating}" value="1" /></td>
+                <td><input type="radio" th:field="*{eatOutRating}" value="2" /></td>
+                <td><input type="radio" th:field="*{eatOutRating}" value="3" /></td>
+                <td><input type="radio" th:field="*{eatOutRating}" value="4" /></td>
+                <td><input type="radio" th:field="*{eatOutRating}" value="5" /></td>
+            </tr>
+            <tr>
+                <td>I like to watch TV</td>
+                <td><input type="radio" th:field="*{watchTvRating}" value="1" /></td>
+                <td><input type="radio" th:field="*{watchTvRating}" value="2" /></td>
+                <td><input type="radio" th:field="*{watchTvRating}" value="3" /></td>
+                <td><input type="radio" th:field="*{watchTvRating}" value="4" /></td>
+                <td><input type="radio" th:field="*{watchTvRating}" value="5" /></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

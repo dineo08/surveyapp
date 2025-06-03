@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Survey Results</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+    <div class="nav-title">
+        <h5>_Surveys</h5>
+    </div>
+    <ul>
+        <li><a th:href="@{/survey_form}">FILL OUT SURVEY</a></li>
+        <li><a th:href="@{/survey_results}">VIEW SURVEY RESULTS</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2>Survey Results</h2>
+
+    <div th:if="${hasData}">
+        <div class="result">Total number of surveys: <b th:text="${totalSurveys}"></b></div>
+        <div class="result">Average Age: <b th:text="${averageAge}"></b></div>
+        <div class="result">Oldest person who participated in survey: <b th:text="${oldest}"></b></div>
+        <div class="result">Youngest person who participated in survey: <b th:text="${youngest}"></b></div>
+        <br>
+        <div class="result">Percentage of people who like Pizza: <b th:text="${pizzaPercentage} + '%'"></b></div>
+        <div class="result">Percentage of people who like Pasta: <b th:text="${pastaPercentage} + '%'"></b></div>
+        <div class="result">Percentage of people who like Pap and Wors: <b th:text="${papWorsPercentage} + '%'"></b></div>
+        <br>
+        <div class="result">People who like to watch movies: <b th:text="${avgMovies}"></b></div>
+        <div class="result">People who like to listen to radio: <b th:text="${avgRadio}"></b></div>
+        <div class="result">People who like to eat out: <b th:text="${avgEatOut}"></b></div>
+        <div class="result">People who like to watch TV: <b th:text="${avgTv}"></b></div>
+    </div>
+
+    <div th:if="${!hasData}" class="no-data">
+        <p>No Surveys Available.</p>
+    </div>
+</div>
+
+</body>
+</html>
