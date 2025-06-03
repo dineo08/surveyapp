@@ -16,27 +16,27 @@
 </nav>
 <div class="container">
     <h2>Survey Results</h2>
-
     <div th:if="${hasData}">
-        <div class="result">Total number of surveys: <b th:text="${totalSurveys}"></b></div>
-        <div class="result">Average Age: <b th:text="${averageAge}"></b></div>
-        <div class="result">Oldest person who participated in survey: <b th:text="${oldest}"></b></div>
-        <div class="result">Youngest person who participated in survey: <b th:text="${youngest}"></b></div>
-        <br>
-        <div class="result">Percentage of people who like Pizza: <b th:text="${pizzaPercentage} + '%'"></b></div>
-        <div class="result">Percentage of people who like Pasta: <b th:text="${pastaPercentage} + '%'"></b></div>
-        <div class="result">Percentage of people who like Pap and Wors: <b th:text="${papWorsPercentage} + '%'"></b></div>
-        <br>
-        <div class="result">People who like to watch movies: <b th:text="${avgMovies}"></b></div>
-        <div class="result">People who like to listen to radio: <b th:text="${avgRadio}"></b></div>
-        <div class="result">People who like to eat out: <b th:text="${avgEatOut}"></b></div>
-        <div class="result">People who like to watch TV: <b th:text="${avgTv}"></b></div>
+        <div class="result-card"><i class="fa-solid fa-users"></i> Total Surveys: <b th:text="${totalSurveys}"></b></div>
+        <div class="result-card"><i class="fa-solid fa-chart-line"></i> Average Age: <b th:text="${averageAge}"></b></div>
+        <div class="result-card"><i class="fa-solid fa-user-clock"></i> Oldest person who participated in survey: <b th:text="${oldest}"></b></div>
+        <div class="result-card"><i class="fa-solid fa-child"></i> Youngest person who participated in survey: <b th:text="${youngest}"></b></div>
+
+        <h3><i class="fa-solid fa-pizza-slice"></i> Food Preferences</h3>
+        <div class="result-card">Percentage of people who like Pizza: <b th:text="${pizzaPercentage} + '%'"></b></div>
+        <div class="result-card">Percentage of people who like Pasta: <b th:text="${pastaPercentage} + '%'"></b></div>
+        <div class="result-card">Percentage of people who like Pap and Wors: <b th:text="${papWorsPercentage} + '%'"></b></div>
+
+        <h3><i class="fa-solid fa-thumbs-up"></i> Lifestyle Ratings</h3>
+        <div class="result-card"><i class="fa-solid fa-film"></i> People who like to watch movies: <b th:text="${avgMovies}"></b></div>
+        <div class="result-card"><i class="fa-solid fa-radio"></i> People who like to listen to radio: <b th:text="${avgRadio}"></b></div>
+        <div class="result-card"><i class="fa-solid fa-utensils"></i> People who like to eat out: <b th:text="${avgEatOut}"></b></div>
+        <div class="result-card"><i class="fa-solid fa-tv"></i> People who like to watch TV: <b th:text="${avgTv}"></b></div>
     </div>
 
     <div th:if="${!hasData}" class="no-data">
-        <p>No Surveys Available.</p>
+        <p><i class="fa-solid fa-circle-exclamation"></i> No Surveys Available.</p>
     </div>
 </div>
-
 </body>
 </html>
