@@ -29,7 +29,7 @@ public class SurveyUser {
     @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank(message = "Contact number is required")
+    @NotNull(message = "Contact number is required")
     private String phonenumber;
 
     @NotNull(message = "Date of birth is required")
@@ -44,18 +44,18 @@ public class SurveyUser {
 
     @Min(1)
     @Max(5)
-    private int eatOutRating;
+    private Integer eatOutRating;
 
     @Min(1)
     @Max(5)
-    private int watchMoviesRating;
+    private Integer watchMoviesRating;
 
     @Min(1)
     @Max(5)
-    private int watchTvRating;
+    private Integer watchTvRating;
 
     @Min(1)
     @Max(5)
-    private int listenToRadioRating;
+    private Integer listenToRadioRating;
 }
 

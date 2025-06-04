@@ -34,7 +34,31 @@ public class SurveyController {
             return "survey_form";
         }
 
-        // Custom validations
+        // Validate Email
+        String email = surveyUser.getEmail();
+
+        if (email == null || email.trim().isEmpty()) {
+            model.addAttribute("customError", "Email is required.");
+            return "survey_form";
+        }
+
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            model.addAttribute("customError", "Please enter a valid email address.");
+            return "survey_form";
+        }
+
+        // Validate Contact Number
+        String phone = surveyUser.getPhonenumber();
+
+        if (phone == null || phone.trim().isEmpty()) {
+            model.addAttribute("customError", "Contact number is required.");
+            return "survey_form";
+        }
+
+        if (!phone.matches("\\d{10,15}")) {
+            model.addAttribute("customError", "Contact number must be numeric and 10–15 digits long.");
+            return "survey_form";
+        }
 
         // Validate Date of Birth and Age
         if (surveyUser.getBirthdate() == null) {
@@ -70,8 +94,8 @@ public class SurveyController {
         return "redirect:/survey_form?success=true";
     }
 
-    private boolean isValidRating(int rating) {
-        return rating >= 1 && rating <= 5;
+    private boolean isValidRating(Integer rating) {
+        return rating != null && rating >= 1 && rating <= 5;
     }
 
     @GetMapping("/survey_results")
